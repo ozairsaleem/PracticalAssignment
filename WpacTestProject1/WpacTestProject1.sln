@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpacTestProject1", "WpacTestProject1\WpacTestProject1.csproj", "{AC6CC8FA-8660-49DE-9F71-C7D094B92ECB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC6CC8FA-8660-49DE-9F71-C7D094B92ECB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC6CC8FA-8660-49DE-9F71-C7D094B92ECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC6CC8FA-8660-49DE-9F71-C7D094B92ECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC6CC8FA-8660-49DE-9F71-C7D094B92ECB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FCF0E69E-EA5C-4227-BAE8-5017FFEC79E8}
+	EndGlobalSection
+EndGlobal
