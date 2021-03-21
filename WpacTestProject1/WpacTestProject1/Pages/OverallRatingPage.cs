@@ -24,8 +24,8 @@ namespace WpacTestProject1
         /// Elements
         /// </summary>
 
-        private IWebElement elem_RandomModelFromFirstPage()
-        { return WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-overall/div/div/table/tbody/tr[" + Faker.Number.RandomNumber(2, 5).ToString() + "]/td[3]/a")); }
+        private IWebElement elem_RandomModelFromFirstPage => WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-overall/div/div/table/tbody/tr[" + Faker.Number.RandomNumber(2, 5).ToString() + "]/td[3]/a"));
+        
         
        
         
@@ -34,7 +34,7 @@ namespace WpacTestProject1
         /// </summary>
         public CarModelPage click_on_RandomModelFromFirstPage()
         {
-            elem_RandomModelFromFirstPage().Click();
+            elem_RandomModelFromFirstPage.Click();
             return new CarModelPage(driver);
         }    
 

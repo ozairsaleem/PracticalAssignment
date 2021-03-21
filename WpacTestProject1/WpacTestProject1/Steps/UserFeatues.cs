@@ -1,11 +1,10 @@
 ﻿using System;
-
 using TechTalk.SpecFlow;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Extensions.Configuration;
 using System.Threading;
+
 
 namespace WpacTestProject1
 {
@@ -13,13 +12,15 @@ namespace WpacTestProject1
     public class UserFeatues
     {
         public IWebDriver driver;
+        private IConfiguration config;
+        
         private HomePage homePage;
         private RegisterPage registerPage;
         private ProfilePage profilePage;
         private OverallRatingPage overAllRatingPage;
         private CarModelPage carModelPage;
 
-        public string baseURL = "https://buggy.justtestit.org/";
+        
         public static string username= "Alpha";
         public static string firstName = "Alpha";
         public static string lastName = "beta";
@@ -27,18 +28,17 @@ namespace WpacTestProject1
         public static int currentVoteCount = 0;
         public static string voteComment = "";
 
-        [Given(@"the browser is open")]
-        public void GivenTheBrowserIsOpen()
+        public UserFeatues(IWebDriver Driver, IConfiguration Config)
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();            
+            this.driver = Driver;
+            this.config = Config;
         }
+
         
         [Given(@"user is on the Home page")]
         public void GivenUserIsOnTheHomePage()
         {
-            this.homePage = new HomePage(driver);
-            this.homePage.GoToUrl(baseURL);
+            this.homePage = new HomePage(driver);            
         }
         
         [When(@"user click on register button")]
@@ -74,7 +74,7 @@ namespace WpacTestProject1
         [Then(@"message is shown ""(.*)""")]
         public void ThenMessageIsShown(string p0)
         {
-            Assert.AreEqual(p0, this.registerPage.elem_RegisterMessage().Text);
+            Assert.AreEqual(p0, this.registerPage.elem_RegisterMessage.Text);
         }
 
 
@@ -88,7 +88,7 @@ namespace WpacTestProject1
         [Then(@"user gets message ""(.*)""")]
         public void ThenUserGetsMessage(string p0)
         {
-            Assert.AreEqual(this.registerPage.elem_RegisterWarningMessage().Text, p0);
+            Assert.AreEqual(this.registerPage.elem_RegisterWarningMessage.Text, p0);
         }
 
         [When(@"user enters the requied fields with not secure password")]
@@ -118,8 +118,7 @@ namespace WpacTestProject1
 
         [Given(@"new user is already registered")]
         public void GivenNewUserIsAlreadyRegistered()
-        {
-            GivenTheBrowserIsOpen();
+        {           
             GivenUserIsOnTheHomePage();
             WhenUserClickOnRegisterButton();
             WhenUserIsNavigatedToRegistrationPage();
@@ -131,12 +130,12 @@ namespace WpacTestProject1
         public void GivenUserLoginToApplication()
         {
             this.homePage = new HomePage(driver);
-            this.homePage.GoToUrl(baseURL);
+            this.homePage.GoToUrl(config.GetValue<string>("AppSettings:TestURL"));
 
             this.homePage.enter_LoginAndPassword(username, password);
             this.homePage.click_on_LoginButton();
 
-            Assert.AreEqual(this.homePage.elem_AfterLoginText().Text, "Hi, "+firstName);
+            Assert.AreEqual(this.homePage.elem_AfterLoginText.Text, "Hi, "+firstName);
         }
 
         [When(@"user click profile page")]
@@ -160,7 +159,7 @@ namespace WpacTestProject1
         [Then(@"user profile information is saved and message is shown ""(.*)""")]
         public void ThenUserProfileInformationIsSavedAndMessageIsShown(string p0)
         {            
-            Assert.AreEqual(p0, this.profilePage.elem_ProfileMessage().Text);
+            Assert.AreEqual(p0, this.profilePage.elem_ProfileMessage.Text);
         }
 
 
@@ -179,8 +178,8 @@ namespace WpacTestProject1
         [When(@"User add a comment and press Vote button")]
         public void WhenUserAddACommentAndPressVoteButton()
         {         
-            string currentVoterName = this.carModelPage.elem_VoteUserLatest().Text;
-            currentVoteCount = Convert.ToInt32(this.carModelPage.elem_VoteCount().Text);
+            string currentVoterName = this.carModelPage.elem_VoteUserLatest.Text;
+            currentVoteCount = Convert.ToInt32(this.carModelPage.elem_VoteCount.Text);
             voteComment = Faker.Lorem.Sentence();
 
             this.carModelPage.enter_Comment(voteComment);
@@ -202,7 +201,7 @@ namespace WpacTestProject1
 
             for (int i = 0; i < 1000; i++)
             {
-                if (currentVoteCount != Convert.ToInt32(this.carModelPage.elem_VoteCount().Text))
+                if (currentVoteCount != Convert.ToInt32(this.carModelPage.elem_VoteCount.Text))
                     break;
                 else
                     Thread.Sleep(500);
@@ -221,7 +220,7 @@ namespace WpacTestProject1
         [When(@"User press Vote button without comment")]
         public void WhenUserPressVoteButtonWithoutComment()
         {
-            currentVoteCount = Convert.ToInt32(this.carModelPage.elem_VoteCount().Text);
+            currentVoteCount = Convert.ToInt32(this.carModelPage.elem_VoteCount.Text);
             this.carModelPage.click_on_VoteButton();
 
 
@@ -237,7 +236,7 @@ namespace WpacTestProject1
 
             for (int i = 0; i < 1000; i++)
             {
-                if (currentVoteCount != Convert.ToInt32(this.carModelPage.elem_VoteCount().Text))
+                if (currentVoteCount != Convert.ToInt32(this.carModelPage.elem_VoteCount.Text))
                     break;
                 else
                     Thread.Sleep(500);
@@ -248,22 +247,17 @@ namespace WpacTestProject1
         [Then(@"votes should be incremented")]
         public void ThenVotesShouldBeIncremented()
         {
-            Assert.AreEqual(currentVoteCount + 1, Convert.ToInt32(this.carModelPage.elem_VoteCount().Text));
+            Assert.AreEqual(currentVoteCount + 1, Convert.ToInt32(this.carModelPage.elem_VoteCount.Text));
         }
 
         [Then(@"comment should be listed in the comment secion")]
         public void ThenCommentShouldBeListedInTheCommentSecion()
         {            
-            Assert.AreEqual(firstName+" "+lastName, this.carModelPage.elem_VoteUserLatest().Text);            
-            Assert.AreEqual(voteComment, this.carModelPage.elem_VoteCommentLatest().Text);                                                                       
+            Assert.AreEqual(firstName+" "+lastName, this.carModelPage.elem_VoteUserLatest.Text);            
+            Assert.AreEqual(voteComment, this.carModelPage.elem_VoteCommentLatest.Text);                                                                       
         }
 
-        [Then(@"user close the browser")]
-        public void ThenUserCloseTheBrowser()
-        {
-            driver.Quit();
-            driver.Dispose();
-        }
+
 
     }
 }

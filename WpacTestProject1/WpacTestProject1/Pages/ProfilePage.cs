@@ -23,26 +23,14 @@ namespace WpacTestProject1
         /// Elements
         /// </summary>
 
-        private IWebElement elem_Gender()
-        { return WaitForFindingElement(By.Id("gender")); }
+        private IWebElement elem_Gender => WaitForFindingElement(By.Id("gender"));
+        private IWebElement elem_Age => WaitForFindingElement(By.Id("age"));
+        private IWebElement elem_Address => WaitForFindingElement(By.Id("address"));
+        private IWebElement elem_Phone => WaitForFindingElement(By.Id("phone"));
+        private IWebElement elem_Hobby => WaitForFindingElement(By.Id("hobby"));
+        public IWebElement elem_SaveProfileButton => WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-profile/div/form/div[2]/div/button"));
+        public IWebElement elem_ProfileMessage => WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-profile/div/form/div[1]/div[1]/div[2]"));
 
-        private IWebElement elem_Age()
-        { return WaitForFindingElement(By.Id("age")); }
-
-        private IWebElement elem_Address()
-        { return WaitForFindingElement(By.Id("address")); }
-
-        private IWebElement elem_Phone()
-        { return WaitForFindingElement(By.Id("phone")); }
-
-        private IWebElement elem_Hobby()
-        { return WaitForFindingElement(By.Id("hobby")); }
-
-        public IWebElement elem_SaveProfileButton()
-        { return WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-profile/div/form/div[2]/div/button")); }
-
-        public IWebElement elem_ProfileMessage()
-        { return WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-profile/div/form/div[1]/div[1]/div[2]")); }
 
 
         /// <summary>
@@ -51,16 +39,16 @@ namespace WpacTestProject1
 
         public void enter_ProfileAddionalDetails(string gender, string age, string address, string phone, string hobby)
         {
-            elem_Gender().SendKeys(gender);
-            elem_Age().SendKeys(age);
-            elem_Address().SendKeys(address);
-            elem_Phone().SendKeys(phone);
-            elem_Hobby().SendKeys(hobby);
+            elem_Gender.SendKeys(gender);
+            elem_Age.SendKeys(age);
+            elem_Address.SendKeys(address);
+            elem_Phone.SendKeys(phone);
+            elem_Hobby.SendKeys(hobby);
         }
 
         public void click_on_SaveProfileButton()
         {
-            elem_SaveProfileButton().Click();
+            elem_SaveProfileButton.Click();
         }
 
         private void WaitForClickableElement(By by)

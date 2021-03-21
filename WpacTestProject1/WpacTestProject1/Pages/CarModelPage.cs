@@ -24,20 +24,12 @@ namespace WpacTestProject1
         /// Elements
         /// </summary>
 
-        public IWebElement elem_Comment()
-        { return WaitForFindingElement(By.Id("comment")); }
+        public IWebElement elem_Comment => WaitForFindingElement(By.Id("comment"));
+        public IWebElement elem_VoteCount => WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-model/div/div[1]/div[3]/div[2]/div[1]/h4/strong"));
+        private IWebElement elem_VoteButton => WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-model/div/div[1]/div[3]/div[2]/div[2]/div/button"));
+        public IWebElement elem_VoteUserLatest => WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-model/div/div[3]/table/tbody/tr[1]/td[2]"));
+        public IWebElement elem_VoteCommentLatest => WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-model/div/div[3]/table/tbody/tr[1]/td[3]"));
 
-        public IWebElement elem_VoteCount()
-        { return WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-model/div/div[1]/div[3]/div[2]/div[1]/h4/strong")); }
-
-        private IWebElement elem_VoteButton()
-        { return WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-model/div/div[1]/div[3]/div[2]/div[2]/div/button")); }
-
-        public IWebElement elem_VoteUserLatest()
-        { return WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-model/div/div[3]/table/tbody/tr[1]/td[2]")); }
-                                            
-        public IWebElement elem_VoteCommentLatest()
-        { return WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-model/div/div[3]/table/tbody/tr[1]/td[3]")); }
 
 
         /// <summary>
@@ -47,12 +39,12 @@ namespace WpacTestProject1
 
         public void click_on_VoteButton()
         {
-            elem_VoteButton().Click();
+            elem_VoteButton.Click();
         }
 
         public void enter_Comment(string comment)
         {
-            elem_Comment().SendKeys(comment);
+            elem_Comment.SendKeys(comment);
         }
 
         private void WaitForClickableElement(By by)

@@ -1,0 +1,8 @@
+{
+  "AppSettings": {
+    "TestURL": "https://buggy.justtestit.org/",
+    "User": "Alpha",
+    "Password": "Alphabeta@1#",
+    "Browser": "chrome"
+  }
+}

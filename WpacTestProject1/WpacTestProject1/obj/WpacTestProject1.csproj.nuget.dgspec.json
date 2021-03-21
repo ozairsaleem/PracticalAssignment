@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\My\\FinalAssignment_Ozair\\WpacTestProject1\\WpacTestProject1\\WpacTestProject1.csproj": {}
+    "C:\\Users\\OzairS\\Documents\\GitHub\\PracticalAssignment\\WpacTestProject1\\WpacTestProject1\\WpacTestProject1.csproj": {}
   },
   "projects": {
-    "C:\\My\\FinalAssignment_Ozair\\WpacTestProject1\\WpacTestProject1\\WpacTestProject1.csproj": {
+    "C:\\Users\\OzairS\\Documents\\GitHub\\PracticalAssignment\\WpacTestProject1\\WpacTestProject1\\WpacTestProject1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\My\\FinalAssignment_Ozair\\WpacTestProject1\\WpacTestProject1\\WpacTestProject1.csproj",
+        "projectUniqueName": "C:\\Users\\OzairS\\Documents\\GitHub\\PracticalAssignment\\WpacTestProject1\\WpacTestProject1\\WpacTestProject1.csproj",
         "projectName": "WpacTestProject1v2",
-        "projectPath": "C:\\My\\FinalAssignment_Ozair\\WpacTestProject1\\WpacTestProject1\\WpacTestProject1.csproj",
+        "projectPath": "C:\\Users\\OzairS\\Documents\\GitHub\\PracticalAssignment\\WpacTestProject1\\WpacTestProject1\\WpacTestProject1.csproj",
         "packagesPath": "C:\\Users\\OzairS\\.nuget\\packages\\",
-        "outputPath": "C:\\My\\FinalAssignment_Ozair\\WpacTestProject1\\WpacTestProject1\\obj\\",
+        "outputPath": "C:\\Users\\OzairS\\Documents\\GitHub\\PracticalAssignment\\WpacTestProject1\\WpacTestProject1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\OzairS\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,6 +38,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "BoDi": {
+              "target": "Package",
+              "version": "[1.5.0, )"
+            },
             "DotNetSeleniumExtras.PageObjects": {
               "target": "Package",
               "version": "[3.11.0, )"
@@ -62,6 +66,22 @@
               "target": "Package",
               "version": "[2.1.0, )"
             },
+            "Microsoft.Edge.SeleniumTools": {
+              "target": "Package",
+              "version": "[3.141.2, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.5.0, )"
@@ -77,6 +97,14 @@
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",
               "version": "[88.0.4324.9600, )"
+            },
+            "Selenium.WebDriver.GeckoDriver": {
+              "target": "Package",
+              "version": "[0.29.0, )"
+            },
+            "Selenium.WebDriver.MSEdgeDriver": {
+              "target": "Package",
+              "version": "[89.0.774.54, )"
             },
             "SpecFlow": {
               "target": "Package",

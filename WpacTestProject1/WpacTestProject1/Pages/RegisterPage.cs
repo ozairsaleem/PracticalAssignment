@@ -24,29 +24,15 @@ namespace WpacTestProject1
         /// Elements
         /// </summary>
         
-        private IWebElement elem_UserName()
-        {return WaitForFindingElement(By.Id("username"));}
+        private IWebElement elem_UserName => WaitForFindingElement(By.Id("username"));
+        private IWebElement elem_FirstName => WaitForFindingElement(By.Id("firstName"));
+        private IWebElement elem_LastName => WaitForFindingElement(By.Id("lastName"));
+        private IWebElement elem_Password => WaitForFindingElement(By.Id("password"));
+        private IWebElement elem_ConfirmPassword => WaitForFindingElement(By.Id("confirmPassword"));
+        public IWebElement elem_RegisterMessage => WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-register/div/div/form/div[6]"));
+        public IWebElement elem_RegisterWarningMessage => WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-register/div/div/form/div[5]/div"));
+        private IWebElement elem_RegisterButton => WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-register/div/div/form/button"));
 
-        private IWebElement elem_FirstName()
-        {return WaitForFindingElement(By.Id("firstName"));}
-
-        private IWebElement elem_LastName()
-        {return WaitForFindingElement(By.Id("lastName"));}
-
-        private IWebElement elem_Password()
-        { return WaitForFindingElement(By.Id("password")); }
-
-        private IWebElement elem_ConfirmPassword()
-        { return WaitForFindingElement(By.Id("confirmPassword")); }
-
-        public IWebElement elem_RegisterMessage()
-        { return WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-register/div/div/form/div[6]")); }
-                                              
-        public IWebElement elem_RegisterWarningMessage()
-        { return WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-register/div/div/form/div[5]/div")); }
-
-        private IWebElement elem_RegisterButton()
-        { return WaitForFindingElement(By.XPath("/html/body/my-app/div/main/my-register/div/div/form/button")); }
 
 
         /// <summary>
@@ -55,16 +41,16 @@ namespace WpacTestProject1
         
         public void enter_UserDetails(string username, string firstName,string lastName, string password, string confirmPassword)
         {
-            elem_UserName().SendKeys(username);
-            elem_FirstName().SendKeys(firstName);
-            elem_LastName().SendKeys(lastName);
-            elem_Password().SendKeys(password);
-            elem_ConfirmPassword().SendKeys(confirmPassword);
+            elem_UserName.SendKeys(username);
+            elem_FirstName.SendKeys(firstName);
+            elem_LastName.SendKeys(lastName);
+            elem_Password.SendKeys(password);
+            elem_ConfirmPassword.SendKeys(confirmPassword);
         }
 
         public void click_on_RegisterButton()
         {
-            elem_RegisterButton().Click();
+            elem_RegisterButton.Click();
         }
 
         private void WaitForClickableElement(By by)
